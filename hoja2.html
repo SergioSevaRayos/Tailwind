@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Datos de Usuarios - Hoja 2</title>
     <link rel="shortcut icon" href="logoSTTblanco.webp" type="image/x-icon">
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -33,27 +33,31 @@
     </script>
 </head>
 
-<body class="bg-slate-100 dark:bg-darkBg text-slate-900 dark:text-slate-200 transition-colors duration-300 min-h-screen flex flex-col">
-    
-    <header id="navbar" class="w-full bg-white dark:bg-slate-900 shadow-md sticky top-0 z-50">
-        </header>
+<body
+    class="bg-slate-100 dark:bg-darkBg text-slate-900 dark:text-slate-200 transition-colors duration-300 min-h-screen flex flex-col">
 
-    <button id="theme-toggle" class="fixed bottom-5 right-5 z-50 p-3 rounded-full bg-blue-700 dark:bg-cyanCustom text-white dark:text-darkBg shadow-lg hover:scale-110 transition-transform">
+    <header id="navbar" class="w-full bg-white dark:bg-slate-900 shadow-md sticky top-0 z-50">
+    </header>
+
+    <button id="theme-toggle"
+        class="fixed bottom-5 right-5 z-50 p-3 rounded-full bg-blue-700 dark:bg-cyanCustom text-white dark:text-darkBg shadow-lg hover:scale-110 transition-transform">
         <span class="dark:hidden text-xl">🌙</span>
         <span class="hidden dark:inline text-xl">☀️</span>
     </button>
 
     <main class="flex-grow container mx-auto px-4 py-10">
-        <div class="bg-white dark:bg-slate-800 p-6 md:p-10 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700">
-            
+        <div
+            class="bg-white dark:bg-slate-800 p-6 md:p-10 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700">
+
             <div class="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
                 <div>
-                    <h1 class="text-sm font-bold text-blue-700 dark:text-cyanCustom uppercase tracking-widest">Hoja 2</h1>
+                    <h1 class="text-sm font-bold text-blue-700 dark:text-cyanCustom uppercase tracking-widest">Hoja 2
+                    </h1>
                     <h2 class="text-3xl font-extrabold text-slate-800 dark:text-white">Visualización de Datos</h2>
                 </div>
-                
+
                 <div class="relative w-full md:w-64">
-                    <input type="text" id="filtro" placeholder="Filtrar registros..." 
+                    <input type="text" id="filtro" placeholder="Filtrar registros..."
                         class="w-full pl-10 pr-4 py-2 rounded-full border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 focus:ring-2 focus:ring-blue-700 dark:focus:ring-cyanCustom outline-none transition-all">
                     <span class="absolute left-3 top-2.5 text-slate-400">🔍</span>
                 </div>
@@ -72,11 +76,12 @@
                         </tr>
                     </thead>
                     <tbody id="cuerpo-tabla" class="divide-y divide-slate-200 dark:divide-slate-700">
-                        </tbody>
+                    </tbody>
                 </table>
             </div>
 
-            <div id="form-editar" style="display:none;" class="mt-12 p-8 bg-blue-50 dark:bg-slate-900 rounded-2xl border-2 border-dashed border-blue-200 dark:border-slate-700">
+            <div id="form-editar" style="display:none;"
+                class="mt-12 p-8 bg-blue-50 dark:bg-slate-900 rounded-2xl border-2 border-dashed border-blue-200 dark:border-slate-700">
                 <h3 class="text-2xl font-bold text-blue-700 dark:text-cyanCustom mb-6 flex items-center gap-2">
                     <span>✏️</span> Editar Registro
                 </h3>
@@ -86,39 +91,47 @@
 
                     <div>
                         <label class="block text-sm font-medium mb-1">Nombre:</label>
-                        <input type="text" id="edit-nombre" required class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 dark:bg-slate-800 outline-none focus:ring-2 focus:ring-blue-700 dark:focus:ring-cyanCustom">
+                        <input type="text" id="edit-nombre" required
+                            class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 dark:bg-slate-800 outline-none focus:ring-2 focus:ring-blue-700 dark:focus:ring-cyanCustom">
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium mb-1">Apellidos:</label>
-                        <input type="text" id="edit-apellidos" required class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 dark:bg-slate-800 outline-none focus:ring-2 focus:ring-blue-700 dark:focus:ring-cyanCustom">
+                        <input type="text" id="edit-apellidos" required
+                            class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 dark:bg-slate-800 outline-none focus:ring-2 focus:ring-blue-700 dark:focus:ring-cyanCustom">
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium mb-1">Teléfono:</label>
-                        <input type="text" id="edit-telefono" class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 dark:bg-slate-800 outline-none focus:ring-2 focus:ring-blue-700 dark:focus:ring-cyanCustom">
+                        <input type="text" id="edit-telefono"
+                            class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 dark:bg-slate-800 outline-none focus:ring-2 focus:ring-blue-700 dark:focus:ring-cyanCustom">
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium mb-1">Email:</label>
-                        <input type="text" id="edit-email" class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 dark:bg-slate-800 outline-none focus:ring-2 focus:ring-blue-700 dark:focus:ring-cyanCustom">
+                        <input type="text" id="edit-email"
+                            class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 dark:bg-slate-800 outline-none focus:ring-2 focus:ring-blue-700 dark:focus:ring-cyanCustom">
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium mb-1">Sexo:</label>
-                        <input type="text" id="edit-sexo" class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 dark:bg-slate-800 outline-none focus:ring-2 focus:ring-blue-700 dark:focus:ring-cyanCustom">
+                        <input type="text" id="edit-sexo"
+                            class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 dark:bg-slate-800 outline-none focus:ring-2 focus:ring-blue-700 dark:focus:ring-cyanCustom">
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium mb-1">Fecha nacimiento:</label>
-                        <input type="date" id="edit-fecha" class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 dark:bg-slate-800 outline-none focus:ring-2 focus:ring-blue-700 dark:focus:ring-cyanCustom">
+                        <input type="date" id="edit-fecha"
+                            class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 dark:bg-slate-800 outline-none focus:ring-2 focus:ring-blue-700 dark:focus:ring-cyanCustom">
                     </div>
 
                     <div class="md:col-span-2 lg:col-span-3 flex gap-4 mt-4">
-                        <button type="submit" class="px-6 py-2 bg-blue-700 dark:bg-cyanCustom text-white dark:text-darkBg font-bold rounded-lg hover:opacity-90 transition-all">
+                        <button type="submit"
+                            class="px-6 py-2 bg-blue-700 dark:bg-cyanCustom text-white dark:text-darkBg font-bold rounded-lg hover:opacity-90 transition-all">
                             Guardar cambios
                         </button>
-                        <button type="button" id="cancelar-edicion" class="px-6 py-2 bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 font-bold rounded-lg hover:bg-slate-300 dark:hover:bg-slate-600 transition-all">
+                        <button type="button" id="cancelar-edicion"
+                            class="px-6 py-2 bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 font-bold rounded-lg hover:bg-slate-300 dark:hover:bg-slate-600 transition-all">
                             Cancelar
                         </button>
                     </div>
@@ -127,7 +140,8 @@
         </div>
     </main>
 
-    <footer class="bg-white dark:bg-slate-900 py-6 border-t border-slate-200 dark:border-slate-800 mt-10 text-center text-slate-500 text-sm">
+    <footer
+        class="bg-white dark:bg-slate-900 py-6 border-t border-slate-200 dark:border-slate-800 mt-10 text-center text-slate-500 text-sm">
         <p>&copy; 2024 Práctica DAW - Gestión de Datos</p>
     </footer>
 
@@ -141,5 +155,47 @@
             localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
         });
     </script>
+    <script>
+        const usuarios = [
+            { nombre: 'Ana', apellidos: 'García López', telefono: '600 123 456', email: 'ana.garcia@email.com', sexo: 'M' },
+            { nombre: 'Carlos', apellidos: 'Rodríguez Martínez', telefono: '611 987 654', email: 'c.rodriguez@email.com', sexo: 'H' },
+            { nombre: 'Elena', apellidos: 'Pérez Sancho', telefono: '622 445 566', email: 'elena.ps@email.com', sexo: 'M' },
+            { nombre: 'Marcos', apellidos: 'Ruiz Gómez', telefono: '633 778 899', email: 'm.ruiz@email.com', sexo: 'H' }
+        ];
+
+        const cuerpoTabla = document.getElementById('cuerpo-tabla');
+
+        usuarios.forEach(usuario => {
+            const fila = `
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                <td class="p-4 text-sm text-slate-700 dark:text-slate-300">${usuario.nombre}</td>
+                <td class="p-4 text-sm text-slate-700 dark:text-slate-300">${usuario.apellidos}</td>
+                <td class="p-4 text-sm text-slate-600 dark:text-slate-400 font-mono">${usuario.telefono}</td>
+                <td class="p-4 text-sm text-blue-600 dark:text-cyanCustom underline decoration-transparent hover:decoration-current transition-all cursor-pointer">${usuario.email}</td>
+                <td class="p-4 text-sm text-center">
+                    <span class="px-2 py-1 rounded-full text-xs font-semibold ${usuario.sexo === 'H' ? 'bg-blue-100 text-blue-700' : 'bg-pink-100 text-pink-700'}">
+                        ${usuario.sexo}
+                    </span>
+                </td>
+                <td class="p-4 text-sm text-center">
+                    <div class="flex justify-center gap-2">
+                        <button class="p-2 text-slate-400 hover:text-blue-600 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                            </svg>
+                        </button>
+                        <button class="p-2 text-slate-400 hover:text-red-600 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                            </svg>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        `;
+            cuerpoTabla.innerHTML += fila;
+        });
+    </script>
 </body>
+
 </html>
