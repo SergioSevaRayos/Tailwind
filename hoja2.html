@@ -156,18 +156,24 @@
         });
     </script>
     <script>
-        const usuarios = [
-            { nombre: 'Ana', apellidos: 'García López', telefono: '600 123 456', email: 'ana.garcia@email.com', sexo: 'M' },
-            { nombre: 'Carlos', apellidos: 'Rodríguez Martínez', telefono: '611 987 654', email: 'c.rodriguez@email.com', sexo: 'H' },
-            { nombre: 'Elena', apellidos: 'Pérez Sancho', telefono: '622 445 566', email: 'elena.ps@email.com', sexo: 'M' },
-            { nombre: 'Marcos', apellidos: 'Ruiz Gómez', telefono: '633 778 899', email: 'm.ruiz@email.com', sexo: 'H' }
-        ];
+    // 1. Datos iniciales
+    let usuarios = [
+        { id: 1, nombre: 'Ana', apellidos: 'García López', telefono: '600 123 456', email: 'ana.garcia@email.com', sexo: 'M', fecha: '1995-05-15' },
+        { id: 2, nombre: 'Carlos', apellidos: 'Rodríguez Martínez', telefono: '611 987 654', email: 'c.rodriguez@email.com', sexo: 'H', fecha: '1988-11-02' },
+        { id: 3, nombre: 'Elena', apellidos: 'Pérez Sancho', telefono: '622 445 566', email: 'elena.ps@email.com', sexo: 'M', fecha: '1992-03-20' },
+        { id: 4, nombre: 'Marcos', apellidos: 'Ruiz Gómez', telefono: '633 778 899', email: 'm.ruiz@email.com', sexo: 'H', fecha: '1990-07-12' }
+    ];
 
-        const cuerpoTabla = document.getElementById('cuerpo-tabla');
+    const cuerpoTabla = document.getElementById('cuerpo-tabla');
+    const inputFiltro = document.getElementById('filtro');
+    const formEditar = document.getElementById('form-editar');
 
-        usuarios.forEach(usuario => {
+    // 2. Función para renderizar la tabla
+    function renderTabla(datos) {
+        cuerpoTabla.innerHTML = '';
+        datos.forEach(usuario => {
             const fila = `
-            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors animate-fade-in">
                 <td class="p-4 text-sm text-slate-700 dark:text-slate-300">${usuario.nombre}</td>
                 <td class="p-4 text-sm text-slate-700 dark:text-slate-300">${usuario.apellidos}</td>
                 <td class="p-4 text-sm text-slate-600 dark:text-slate-400 font-mono">${usuario.telefono}</td>
@@ -179,23 +185,65 @@
                 </td>
                 <td class="p-4 text-sm text-center">
                     <div class="flex justify-center gap-2">
-                        <button class="p-2 text-slate-400 hover:text-blue-600 transition-colors">
+                        <button onclick="prepararEdicion(${usuario.id})" class="p-2 text-slate-400 hover:text-blue-600 transition-colors" title="Editar">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                             </svg>
                         </button>
-                        <button class="p-2 text-slate-400 hover:text-red-600 transition-colors">
+                        <button onclick="eliminarUsuario(${usuario.id})" class="p-2 text-slate-400 hover:text-red-600 transition-colors" title="Eliminar">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                             </svg>
                         </button>
                     </div>
                 </td>
-            </tr>
-        `;
+            </tr>`;
             cuerpoTabla.innerHTML += fila;
         });
-    </script>
+    }
+
+    // 3. Filtrado en tiempo real
+    inputFiltro.addEventListener('input', (e) => {
+        const busqueda = e.target.value.toLowerCase();
+        const filtrados = usuarios.filter(u => 
+            u.nombre.toLowerCase().includes(busqueda) || 
+            u.apellidos.toLowerCase().includes(busqueda) ||
+            u.email.toLowerCase().includes(busqueda)
+        );
+        renderTabla(filtrados);
+    });
+
+    // 4. Lógica de Edición
+    window.prepararEdicion = (id) => {
+        const u = usuarios.find(user => user.id === id);
+        if(!u) return;
+
+        document.getElementById('edit-id').value = u.id;
+        document.getElementById('edit-nombre').value = u.nombre;
+        document.getElementById('edit-apellidos').value = u.apellidos;
+        document.getElementById('edit-telefono').value = u.telefono;
+        document.getElementById('edit-email').value = u.email;
+        document.getElementById('edit-sexo').value = u.sexo;
+        document.getElementById('edit-fecha').value = u.fecha;
+
+        formEditar.style.display = 'block';
+        formEditar.scrollIntoView({ behavior: 'smooth' });
+    };
+
+    document.getElementById('cancelar-edicion').addEventListener('click', () => {
+        formEditar.style.display = 'none';
+    });
+
+    window.eliminarUsuario = (id) => {
+        if(confirm('¿Estás seguro de eliminar este registro?')) {
+            usuarios = usuarios.filter(u => u.id !== id);
+            renderTabla(usuarios);
+        }
+    };
+
+    // Inicializar
+    renderTabla(usuarios);
+</script>
 </body>
 
 </html>
