@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario - Práctica DAW</title>
+    <link rel="shortcut icon" href="logoSTTblanco.webp" type="image/x-icon">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#0f172a',
+                        cyanCustom: '#22d3ee',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script>
+        // Persistencia del modo oscuro
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+</head>
+
+<body class="bg-slate-100 dark:bg-darkBg text-slate-900 dark:text-slate-200 transition-colors duration-300 min-h-screen flex flex-col">
+    
+    <header id="navbar" class="w-full bg-white dark:bg-slate-900 shadow-md sticky top-0 z-50">
+        </header>
+
+    <button id="theme-toggle" class="fixed bottom-5 right-5 z-50 p-3 rounded-full bg-blue-700 dark:bg-cyanCustom text-white dark:text-darkBg shadow-lg hover:scale-110 transition-transform">
+        <span class="dark:hidden text-xl">🌙</span>
+        <span class="hidden dark:inline text-xl">☀️</span>
+    </button>
+
+    <main class="flex-grow container mx-auto px-4 py-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            
+            <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700">
+                <div class="mb-8">
+                    <h1 class="text-sm font-bold text-blue-700 dark:text-cyanCustom uppercase tracking-widest">Hoja 1</h1>
+                    <h2 class="text-3xl font-extrabold text-slate-800 dark:text-white">Formulario de Registro</h2>
+                </div>
+
+                <form method="post" action="ws/crearUsuario2.php" class="space-y-5">
+                    <div>
+                        <label for="nombre" class="block text-sm font-medium mb-1">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" required 
+                            class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-transparent focus:ring-2 focus:ring-blue-700 dark:focus:ring-cyanCustom outline-none transition-all">
+                    </div>
+
+                    <div>
+                        <label for="apellidos" class="block text-sm font-medium mb-1">Apellidos:</label>
+                        <input type="text" id="apellidos" name="apellido" required 
+                            class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-transparent focus:ring-2 focus:ring-blue-700 dark:focus:ring-cyanCustom outline-none transition-all">
+                    </div>
+
+                    <div>
+                        <label for="contrasena" class="block text-sm font-medium mb-1">Contraseña:</label>
+                        <input type="password" id="contrasena" name="contrasena" required 
+                            class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-transparent focus:ring-2 focus:ring-blue-700 dark:focus:ring-cyanCustom outline-none transition-all">
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <div>
+                            <label for="telefono" class="block text-sm font-medium mb-1">Teléfono:</label>
+                            <input type="text" id="telefono" name="telefono" 
+                                class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-transparent focus:ring-2 focus:ring-blue-700 dark:focus:ring-cyanCustom outline-none transition-all">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium mb-1">Email:</label>
+                            <input type="email" id="email" name="email" 
+                                class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-transparent focus:ring-2 focus:ring-blue-700 dark:focus:ring-cyanCustom outline-none transition-all">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium mb-3">Sexo:</label>
+                        <div class="flex flex-wrap gap-4">
+                            <label class="flex items-center gap-2 cursor-pointer bg-slate-50 dark:bg-slate-700 px-4 py-2 rounded-md hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors">
+                                <input type="radio" name="sexo" value="H" class="accent-blue-700 dark:accent-cyanCustom"> Hombre
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer bg-slate-50 dark:bg-slate-700 px-4 py-2 rounded-md hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors">
+                                <input type="radio" name="sexo" value="M" class="accent-blue-700 dark:accent-cyanCustom"> Mujer
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer bg-slate-50 dark:bg-slate-700 px-4 py-2 rounded-md hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors">
+                                <input type="radio" name="sexo" value="I" class="accent-blue-700 dark:accent-cyanCustom"> Indeterminado
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full py-3 mt-4 font-bold text-white bg-blue-700 dark:bg-cyanCustom dark:text-darkBg rounded-lg hover:opacity-90 transform active:scale-95 transition-all shadow-lg">
+                        Guardar Registro
+                    </button>
+                </form>
+            </div>
+
+            <div class="lg:sticky lg:top-32 space-y-6 bg-blue-50 dark:bg-slate-800/50 p-8 rounded-2xl border-l-4 border-blue-700 dark:border-cyanCustom">
+                <h2 class="text-2xl font-bold text-slate-800 dark:text-white flex items-center gap-2">
+                    <span>ℹ️</span> Instrucciones
+                </h2>
+
+                <dl class="space-y-6">
+                    <div>
+                        <dt class="font-bold text-blue-700 dark:text-cyanCustom">Nombre y apellidos</dt>
+                        <dd class="text-slate-600 dark:text-slate-400">Deben coincidir exactamente con los de tu documento de identidad oficial.</dd>
+                    </div>
+
+                    <div>
+                        <dt class="font-bold text-blue-700 dark:text-cyanCustom">Contraseña</dt>
+                        <dd class="text-slate-600 dark:text-slate-400">Seguridad requerida: mínimo 8 caracteres (mezcla de letras, números y símbolos).</dd>
+                    </div>
+
+                    <div>
+                        <dt class="font-bold text-blue-700 dark:text-cyanCustom">Teléfono y Email</dt>
+                        <dd class="text-slate-600 dark:text-slate-400">Asegúrate de que ambos sean válidos para recibir notificaciones del sistema.</dd>
+                    </div>
+
+                    <div>
+                        <dt class="font-bold text-blue-700 dark:text-cyanCustom">Sexo</dt>
+                        <dd class="text-slate-600 dark:text-slate-400">Selecciona la opción con la que te identifiques legalmente.</dd>
+                    </div>
+                </dl>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white dark:bg-slate-900 py-6 border-t border-slate-200 dark:border-slate-800 mt-10">
+        <div class="container mx-auto px-4 text-center text-slate-500 text-sm">
+            <p>&copy; 2024 Práctica DAW - Diseño con Tailwind CSS</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/nav.js"></script>
+    <script>
+        // Lógica del botón de cambio de tema
+        const themeBtn = document.getElementById('theme-toggle');
+        themeBtn.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            if (document.documentElement.classList.contains('dark')) {
+                localStorage.theme = 'dark';
+            } else {
+                localStorage.theme = 'light';
+            }
+        });
+    </script>
+</body>
+
+</html>

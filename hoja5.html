@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial - Hoja 5</title>
+    <link rel="shortcut icon" href="logoSTTblanco.webp" type="image/x-icon">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+      // Configuración de Tailwind coincidente
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              darkBg: '#0f172a',
+              cyanCustom: '#22d3ee',
+            }
+          }
+        }
+      }
+    </script>
+
+    <script>
+      // Persistencia del tema
+      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    </script>
+</head>
+
+<body class="bg-slate-100 dark:bg-darkBg text-slate-900 dark:text-slate-200 transition-colors duration-300 min-h-screen flex flex-col">
+    
+    <header id="navbar" class="w-full bg-white dark:bg-slate-900 shadow-md sticky top-0 z-50">
+        </header>
+
+    <button id="theme-toggle" class="fixed bottom-5 right-5 z-50 p-3 rounded-full bg-blue-700 dark:bg-cyanCustom text-white dark:text-darkBg shadow-lg hover:scale-110 transition-transform">
+        <span class="dark:hidden text-xl">🌙</span>
+        <span class="hidden dark:inline text-xl">☀️</span>
+    </button>
+
+    <main class="flex-grow container mx-auto px-4 py-10 max-w-5xl">
+        <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700">
+            
+            <div class="mb-8">
+                <h1 class="text-sm font-bold text-blue-700 dark:text-cyanCustom uppercase tracking-widest">Hoja 5</h1>
+                <h2 class="text-3xl font-extrabold text-slate-800 dark:text-white">Historial de Actividad</h2>
+            </div>
+
+            <div class="contenedor-tabla">
+                <h3 class="text-xl font-semibold mb-4 flex items-center gap-2 text-slate-700 dark:text-slate-300">
+                    <span>🕒</span> Registros del Sistema
+                </h3>
+                
+                <div class="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+                    <table id="tabla-historial" class="w-full text-left border-collapse bg-white dark:bg-slate-900/50">
+                        <thead class="bg-slate-50 dark:bg-slate-900/80 text-blue-700 dark:text-cyanCustom">
+                            <tr>
+                                <th class="p-4 font-bold uppercase text-xs w-24">ID</th>
+                                <th class="p-4 font-bold uppercase text-xs w-40">Acción</th>
+                                <th class="p-4 font-bold uppercase text-xs">Descripción</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cuerpo-tabla-historial" class="divide-y divide-slate-200 dark:divide-slate-700">
+                            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                                <td class="p-4 font-mono text-blue-600 dark:text-cyanCustom">01</td>
+                                <td class="p-4">
+                                    <span class="px-2 py-1 rounded-md bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-bold uppercase">
+                                        Subida
+                                    </span>
+                                </td>
+                                <td class="p-4 text-slate-600 dark:text-slate-400">
+                                    Incorporación de un archivo a la base de datos
+                                </td>
+                            </tr>
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white dark:bg-slate-900 py-6 border-t border-slate-200 dark:border-slate-800 mt-10">
+        <div class="container mx-auto px-4 text-center text-slate-500 text-sm">
+            <p>&copy; 2024 Práctica DAW - Registro de Historial</p>
+        </div>
+    </footer>
+
+    <script src="js/nav.js"></script>
+    <script>
+        // Lógica del botón de cambio de tema
+        const themeBtn = document.getElementById('theme-toggle');
+        themeBtn.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+        });
+    </script>
+</body>
+
+</html>
